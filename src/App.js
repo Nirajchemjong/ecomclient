@@ -1,10 +1,12 @@
-import logo from "./logo.svg";
+import { ToastContainer } from "react-toastify";
 import "./App.css";
+import DefaultLayout from "./components/Layout/DefaultLayout";
 
 function App() {
   return (
     <div className='App'>
-      <header className='App-header'>hello</header>
+      <DefaultLayout />
+      <ToastContainer />
     </div>
   );
 }
