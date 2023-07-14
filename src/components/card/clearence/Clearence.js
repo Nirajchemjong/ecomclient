@@ -1,5 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import Carousel from "../../Layout/carousel/Carousel";
+// import Carousel1 from "../../Layout/carousel/Carousel1";
 
 const Clearence = () => {
   const { productList } = useSelector((state) => state.product);
@@ -19,7 +21,7 @@ const Clearence = () => {
         </p>
       </div>
 
-      <div className='flex  mx-auto '>
+      {/* <div className='flex  mx-auto '>
         <div className='w-full mx-auto flex justify-evenly flex-wrap gap-2 '>
           {productList.map((item, id) => (
             <div
@@ -40,6 +42,30 @@ const Clearence = () => {
             </div>
           ))}
         </div>
+      </div> */}
+      {/* <div className='container'>
+        <Carousel1>
+          {productList.map((item) => (
+            <img
+              src={item.thumbnail}
+              alt='img'
+              srcset=''
+              className='xl:columns-4 lg:col-span-3 md:columns-2'
+            />
+          ))}
+        </Carousel1>
+      </div> */}
+
+      <div className='container mx-auto'>
+        <Carousel>
+          {productList.map((item) => (
+            <img
+              src={item.thumbnail}
+              alt='img'
+              srcset=''
+            />
+          ))}
+        </Carousel>
       </div>
     </div>
   );
