@@ -20,13 +20,13 @@ const Clearence = () => {
       </div>
 
       <div className='flex  mx-auto '>
-        <div className='w-full mx-auto flex justify-center flex-wrap gap-4 '>
+        <div className='w-full mx-auto flex justify-evenly flex-wrap gap-2 '>
           {productList.map((item, id) => (
             <div
               key={id}
-              className=' bg-slate-600 w-52 h-72 rounded-tr-xl overflow-hidden mb-4'
+              className=' bg-slate-600 w-56 h-72 rounded-tr-xl overflow-hidden mb-4'
             >
-              <div className='w-100'>
+              <div className='w-full'>
                 <img
                   className='w-full h-36'
                   src={item.thumbnail}
@@ -34,9 +34,9 @@ const Clearence = () => {
                 />
               </div>
               <h2 className='mx-3 text-slate-200 font-semibold uppercase  text-lg '>
-                {" "}
                 {item.title}
               </h2>
+              <p>{item.description}</p>
             </div>
           ))}
         </div>

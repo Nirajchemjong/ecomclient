@@ -3,6 +3,8 @@ import DefaultLayout from "../../components/Layout/defaultLayout/DefaultLayout";
 import Clearence from "../../components/card/clearence/Clearence";
 import { useDispatch } from "react-redux";
 import { fetchAllProduct } from "../product/ProductAction";
+import CategoryCard from "../../components/card/category/CategoryCard";
+import LearningCard from "../../components/card/category/LearningCard";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -15,6 +17,8 @@ const Home = () => {
       <DefaultLayout pageTitle={"Home page"}>
         <div>
           <Clearence />
+          <CategoryCard />
+          <LearningCard />
         </div>
       </DefaultLayout>
     </div>
