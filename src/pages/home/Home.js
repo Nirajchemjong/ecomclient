@@ -1,16 +1,18 @@
 import React, { useEffect } from "react";
 import DefaultLayout from "../../components/Layout/defaultLayout/DefaultLayout";
 import Clearence from "../../components/card/clearence/Clearence";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProduct } from "../product/ProductAction";
 import CategoryCard from "../../components/card/category/CategoryCard";
 
 const Home = () => {
   const dispatch = useDispatch();
+  const { productList } = useSelector((state) => state.product);
+
   useEffect(() => {
     // dispatch(fetchAllCategories());
-    dispatch(fetchAllProduct());
-  }, [dispatch]);
+    !productList.length && dispatch(fetchAllProduct());
+  }, [dispatch, productList]);
   return (
     <div>
       <DefaultLayout pageTitle={"Home page"}>
