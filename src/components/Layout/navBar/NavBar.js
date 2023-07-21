@@ -54,6 +54,7 @@ export const NavBar = () => {
       <div className='px-6 py-5 mx-auto  sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
         <div className='relative flex items-center justify-around md:justify-between'>
           <div className='flex items-center w-full'>
+            {/* this is for large Screen only  */}
             <Link
               to='/'
               aria-label='Company'
@@ -106,9 +107,21 @@ export const NavBar = () => {
                   <NavLink
                     {...item}
                     key={id}
-                    className='font-medium hidden lg:flex tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400'
+                    className='font-medium relative items-center clear-both group hidden lg:flex tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400'
                   >
                     {item.name}
+                    {item.title === "category" && (
+                      <ul className='clearboth absolute top-7 left-3'>
+                        {catSlice.map((item, id) => (
+                          <li
+                            className='clearboth invisible group-hover:visible font-normal first-letter:uppercase hover:bg-blue-500 hover:px-3 hover:rounded-2xl'
+                            key={id}
+                          >
+                            <Link to={item.name}>{item.name}</Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </NavLink>
                 </li>
               ))}
@@ -127,23 +140,14 @@ export const NavBar = () => {
             <li>
               <NavLink
                 to='/signin'
-                className='text-white hidden lg:flex'
+                className='text-white items-center hidden lg:flex'
               >
                 <FiLogIn />
+                <span className='ml-2'>Login</span>
               </NavLink>
             </li>
-            {/* {inputSign.map((item, id) => (
-              <li key={id}>
-                <NavLink
-                  {...item}
-                  key={id}
-                  className='font-medium hidden lg:flex tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400'
-                >
-                  {item.name}
-                </NavLink>
-              </li>         
-            ))}  */}
           </ul>
+          {/* large screen navbar ends here  */}
           <div className='lg:hidden'>
             <button
               aria-label='Open Menu'
