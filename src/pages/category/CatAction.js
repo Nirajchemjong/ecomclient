@@ -9,7 +9,7 @@ export const fetchAllCategories = () => async (dispatch) => {
     //read all data from TBL_CATEGORY
     const q = query(collection(db, TBL_CATEGOR));
     const catSnap = await getDocs(q);
-    console.log(catSnap);
+    // console.log(catSnap);
     const catList = [];
     catSnap.forEach((item) => {
       const slug = item.id;

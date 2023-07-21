@@ -1,14 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FiLogIn } from "react-icons/fi";
-import { Link, NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Link, NavLink, Route } from "react-router-dom";
 
 export const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { catSlice } = useSelector((state) => state.category);
+
+  useEffect(() => {
+    // console.log(category);
+  }, []);
+  const [display, setDisplay] = useState();
+
   const inputMid = [
     {
-      to: "/product",
-      title: "product",
-      name: "Product",
+      to: "/category",
+      title: "category",
+      name: "Categories",
     },
     // {
     //   to: "/features",
@@ -43,7 +51,7 @@ export const NavBar = () => {
 
   return (
     <div className='bg-gray-900'>
-      <div className='px-4 py-5 mx-auto  sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
+      <div className='px-6 py-5 mx-auto  sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
         <div className='relative flex items-center justify-around md:justify-between'>
           <div className='flex items-center w-full'>
             <Link
@@ -56,12 +64,12 @@ export const NavBar = () => {
                 className='w-8 text-teal-accent-400'
                 viewBox='0 0 24 24'
                 strokeLinejoin='round'
-                strokeWidth='2'
+                strokeWidth='4'
                 strokeLinecap='round'
                 strokeMiterlimit='10'
                 stroke='currentColor'
                 fill='none'
-                color='#FFFFFF'
+                color='#ffffff'
               >
                 <rect
                   x='3'
@@ -92,7 +100,7 @@ export const NavBar = () => {
                 Ecom Client
               </span>
             </Link>
-            <ul className='items-center justify-start space-x-4 lg:flex'>
+            <ul className='items-center justify-center w-full gap-6 space-x-4 lg:flex'>
               {inputMid.map((item, id) => (
                 <li key={id}>
                   <NavLink
@@ -110,7 +118,7 @@ export const NavBar = () => {
                   type='text'
                   name='search'
                   placeholder='Search'
-                  className='w-36 md:w-64 lg:w-96 rounded-lg'
+                  className='w-52  md:w-64 lg:w-96 rounded-lg'
                 />
               </li>
             </ul>
@@ -119,7 +127,7 @@ export const NavBar = () => {
             <li>
               <NavLink
                 to='/signin'
-                className='text-white'
+                className='text-white hidden lg:flex'
               >
                 <FiLogIn />
               </NavLink>
@@ -140,11 +148,11 @@ export const NavBar = () => {
             <button
               aria-label='Open Menu'
               title='Open Menu'
-              className='p-2 -mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline'
+              className='p-2 -mr-1  transition duration-200 rounded focus:outline-none focus:shadow-outline'
               onClick={() => setIsMenuOpen(true)}
             >
               <svg
-                className='w-5 text-gray-600'
+                className='w-5 text-white'
                 viewBox='0 0 24 24'
               >
                 <path
@@ -161,10 +169,12 @@ export const NavBar = () => {
                 />
               </svg>
             </button>
+
+            {/* this is when menu is open  */}
             {isMenuOpen && (
               <div className='absolute z-10 top-0 left-0 w-full'>
                 <div className='p-5 bg-white border rounded shadow-sm'>
-                  <div className='flex items-center justify-between mb-4'>
+                  <div className='flex  items-center justify-between mb-4'>
                     <div>
                       <NavLink
                         href='/'
@@ -232,16 +242,29 @@ export const NavBar = () => {
                     </div>
                   </div>
                   <nav>
+                    {/* this is for mobile and small devices screen only  */}
                     <ul className='space-y-4'>
                       {inputMid.map((item, id) => (
                         <li key={id}>
                           <NavLink
                             {...item}
                             key={id}
-                            className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
+                            className='font-bold tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
                           >
                             {item.name}
-                          </NavLink>{" "}
+                            {item.title === "category" && (
+                              <ul>
+                                {catSlice.map((item, id) => (
+                                  <li
+                                    className='m-2 font-normal first-letter:uppercase hover:bg-blue-500'
+                                    key={id}
+                                  >
+                                    <Link to={item.name}>{item.name}</Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                          </NavLink>
                         </li>
                       ))}
 

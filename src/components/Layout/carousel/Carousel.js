@@ -10,7 +10,7 @@ function Carousel() {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchAllProduct());
+    !productList.length && dispatch(fetchAllProduct());
     // console.log(content.current.scrollWidth);
   }, [productList, dispatch]);
   // console.log(display);

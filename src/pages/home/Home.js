@@ -5,15 +5,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProduct } from "../product/ProductAction";
 import CategoryCard from "../../components/card/category/CategoryCard";
 import Carousel from "../../components/Layout/carousel/Carousel";
+import { fetchAllCategories } from "../category/CatAction";
 
 const Home = () => {
   const dispatch = useDispatch();
   const { productList } = useSelector((state) => state.product);
-
+  const { catSlice } = useSelector((state) => state.category);
   useEffect(() => {
     // dispatch(fetchAllCategories());
     !productList.length && dispatch(fetchAllProduct());
-  }, [dispatch, productList]);
+    !catSlice.length && dispatch(fetchAllCategories());
+  }, [dispatch, productList, catSlice]);
   return (
     <div>
       <DefaultLayout pageTitle={"Home page"}>
