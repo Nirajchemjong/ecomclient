@@ -9,7 +9,7 @@ export const fetchAllProduct = () => async (dispatch) => {
     //read all data from TBL_CATEGORY
     const q = query(collection(db, TBL_PRODUCT));
     const productSnap = await getDocs(q);
-    console.log(productSnap);
+    // console.log(productSnap);
     const productList = [];
     productSnap.forEach((item) => {
       const slug = item.id;
@@ -17,7 +17,7 @@ export const fetchAllProduct = () => async (dispatch) => {
       productList.push({ ...data, slug });
     });
     dispatch(setProductList(productList));
-    console.log(productList);
+    // console.log(productList);
   } catch (error) {
     toast.error(error.message);
     console.log(error);

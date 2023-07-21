@@ -1,16 +1,16 @@
 import React from "react";
 import Button from "../../Button/Button";
 
-const Clearence = () => {
+const Hero = () => {
   return (
-    <div className='h-auto bg-gradient-to-r from-gre from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% p-28'>
-      <div className='button flex flex-col flex-wrap  justify-center items-center mb-4'>
+    <div className='bg-gradient-to-r from-gre from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% pt-24 px-24'>
+      <div className='button flex flex-col flex-wrap  justify-center items-center '>
         <Button>Final Clearence </Button>
         <p className='text-bold font-extrabold text-3xl'>
           OMG IT'S UP TO 70% OFF!!
         </p>
         <p className='italic'>Shop Like You Mean It. </p>
-        <p className=' font-extralight text-sm mb-9'>
+        <p className='font-extralight text-sm '>
           Limited time only. Selected styles marked down as shown.
         </p>
       </div>
@@ -65,4 +65,4 @@ const Clearence = () => {
   );
 };
 
-export default Clearence;
+export default Hero;

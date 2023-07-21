@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FiLogIn } from "react-icons/fi";
 import { Link, NavLink } from "react-router-dom";
 
 export const NavBar = () => {
@@ -9,25 +10,27 @@ export const NavBar = () => {
       title: "product",
       name: "Product",
     },
-    {
-      to: "/features",
-      title: "features",
-      name: "Features",
-    },
-    {
-      to: "/about-us",
-      title: "Aboutus",
-      name: "About us",
-    },
-    {
-      to: "/Contact",
-      title: "contactus",
-      name: "Contact us",
-    },
+    // {
+    //   to: "/features",
+    //   title: "features",
+    //   name: "Features",
+    // },
+    // {
+    //   to: "/about-us",
+    //   title: "Aboutus",
+    //   name: "About us",
+    // },
+    // {
+    //   to: "/Contact",
+    //   title: "contactus",
+    //   name: "Contact us",
+    // },
   ];
+
   const inputSign = [
     {
       to: "/signin",
+
       title: "signin",
       name: "Sign in",
     },
@@ -40,9 +43,9 @@ export const NavBar = () => {
 
   return (
     <div className='bg-gray-900'>
-      <div className='px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
-        <div className='relative flex items-center justify-between'>
-          <div className='flex items-center'>
+      <div className='px-4 py-5 mx-auto  sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
+        <div className='relative flex items-center justify-around md:justify-between'>
+          <div className='flex items-center w-full'>
             <Link
               to='/'
               aria-label='Company'
@@ -89,32 +92,49 @@ export const NavBar = () => {
                 Ecom Client
               </span>
             </Link>
-            <ul className='flex items-center hidden space-x-8 lg:flex'>
+            <ul className='items-center justify-start space-x-4 lg:flex'>
               {inputMid.map((item, id) => (
                 <li key={id}>
                   <NavLink
                     {...item}
                     key={id}
-                    className='font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400'
+                    className='font-medium hidden lg:flex tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400'
                   >
                     {item.name}
                   </NavLink>
                 </li>
               ))}
+
+              <li>
+                <input
+                  type='text'
+                  name='search'
+                  placeholder='Search'
+                  className='w-36 md:w-64 lg:w-96 rounded-lg'
+                />
+              </li>
             </ul>
           </div>
-          <ul className='flex items-center hidden space-x-8 lg:flex'>
-            {inputSign.map((item, id) => (
+          <ul className='flex items-center  space-x-8 lg:flex'>
+            <li>
+              <NavLink
+                to='/signin'
+                className='text-white'
+              >
+                <FiLogIn />
+              </NavLink>
+            </li>
+            {/* {inputSign.map((item, id) => (
               <li key={id}>
                 <NavLink
                   {...item}
                   key={id}
-                  className='font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400'
+                  className='font-medium hidden lg:flex tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400'
                 >
                   {item.name}
                 </NavLink>
-              </li>
-            ))}
+              </li>         
+            ))}  */}
           </ul>
           <div className='lg:hidden'>
             <button
@@ -142,7 +162,7 @@ export const NavBar = () => {
               </svg>
             </button>
             {isMenuOpen && (
-              <div className='absolute top-0 left-0 w-full'>
+              <div className='absolute z-10 top-0 left-0 w-full'>
                 <div className='p-5 bg-white border rounded shadow-sm'>
                   <div className='flex items-center justify-between mb-4'>
                     <div>
@@ -221,7 +241,7 @@ export const NavBar = () => {
                             className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
                           >
                             {item.name}
-                          </NavLink>
+                          </NavLink>{" "}
                         </li>
                       ))}
 
@@ -233,7 +253,7 @@ export const NavBar = () => {
                             className={
                               item.title === "signin"
                                 ? "font-medium tracking-wide mt-2 text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                                : "inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white  transition duration-200 rounded shadow-md bg-black hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                                : "inline-flex items-center justify-center w-full h-12 p-6 font-medium tracking-wide text-white  transition duration-200 rounded shadow-md bg-black hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                             }
                           >
                             {item.name}

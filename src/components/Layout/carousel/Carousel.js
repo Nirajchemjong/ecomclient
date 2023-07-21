@@ -1,45 +1,67 @@
-import React from "react";
+import { useEffect, useRef } from "react";
+import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
+import { useDispatch, useSelector } from "react-redux";
+import ProductCard from "../../card/productCard/ProductCard";
+import { fetchAllProduct } from "../../../pages/product/ProductAction";
 
-const Carousel = () => {
-  return <div>Carousel</div>;
-};
+function Carousel() {
+  const { productList } = useSelector((state) => state.product);
+  const content = useRef();
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAllProduct());
+    // console.log(content.current.scrollWidth);
+  }, [productList, dispatch]);
+  // console.log(display);
+  const scrollLeft = () => {
+    if (content.current) {
+      content.current.scrollLeft -= 300;
+    }
+  };
+
+  const scrollRight = () => {
+    if (content.current) {
+      content.current.scrollLeft += 300;
+    }
+  };
+
+  return (
+    <div className='relative w-full bg-gradient-to-r from-gre from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%'>
+      <div className='text-center py-4  text-xl font-bold'>Latest Products</div>
+      <div className='absolute right-0 top-5 '>
+        <button
+          onClick={scrollLeft}
+          className='p-2 m-2 rounded-full bg-white'
+        >
+          <FiChevronLeft />
+        </button>
+        <button
+          onClick={scrollRight}
+          className='p-2 m-2 rounded-full bg-white'
+        >
+          <FiChevronRight />
+        </button>
+      </div>
+      <div
+        id='content'
+        ref={content}
+        className='carousel p-6  flex flex-nowrap items-center justify-start overflow-x-auto scroll-smooth  scrollbar-hide'
+      >
+        <div className='inline-flex items-start mx-auto mg:items-center md: justify-center lg:justify-center lg:items-center '>
+          {productList.map(
+            (item, id) =>
+              item.status === "active" && (
+                <ProductCard
+                  {...item}
+                  key={id}
+                />
+              )
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default Carousel;
-
-// this is test one didn't worked ||||||||||||  up ones working
-
-// import React, { useEffect, useState } from "react";
-// // import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-// import { BiArrowToBottom, BiArrowToTop, BiCheck } from "react-icons/bi";
-// import { FiSearch } from "react-icons/fi";
-
-// const Carousel = ({ children }) => {
-//   const [result, setResult] = useState(0);
-
-//   const niraj = (e) => {
-//     const { value } = e.target;
-//     setResult(value);
-//     console.log(e);
-//   };
-//   // useEffect(() => {
-//   //   setResult(niraj);
-//   // }, [setResult, niraj]);
-//   console.log(result);
-
-//   const [openSelect, setOpenSelect] = useState(false);
-//   const [select, setSelect] = useState();
-
-//   const test = (arg) => {
-//     setSelect(arg);
-//   };
-
-//   return (
-//     <div>
-//       <div className='carousel carousel-center'>
-//         <div className='h-96 carousel-item  gap-2'>{children}</div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Carousel;
