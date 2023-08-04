@@ -4,6 +4,7 @@ import "./App.css";
 
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/home/Home";
+import SignIn from "./pages/user/SignIn";
 
 function App() {
   return (
@@ -13,6 +14,10 @@ function App() {
           path='/'
           element={<Home />}
         />
+        <Route
+          path='signin'
+          element={<SignIn />}
+        ></Route>
       </Routes>
       <ToastContainer />
     </div>
