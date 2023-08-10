@@ -5,6 +5,7 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/home/Home";
 import SignIn from "./pages/user/SignIn";
+import Login from "./components/user/Login";
 
 function App() {
   return (
@@ -17,6 +18,10 @@ function App() {
         <Route
           path='signin'
           element={<SignIn />}
+        ></Route>
+        <Route
+          path='login'
+          element={<Login />}
         ></Route>
       </Routes>
       <ToastContainer />
