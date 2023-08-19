@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "../../card/productCard/ProductCard";
 import { fetchAllProduct } from "../../../pages/product/ProductAction";
 
-function Carousel() {
+function Carousel({ title }) {
   const { productList } = useSelector((state) => state.product);
   const content = useRef();
 
@@ -28,7 +28,7 @@ function Carousel() {
 
   return (
     <div className='relative w-full bg-gradient-to-r from-gre from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%'>
-      <div className='text-center py-4  text-xl font-bold'>Latest Products</div>
+      <div className='text-center py-4  text-xl font-bold'>{title}</div>
       <div className='absolute right-0 top-5 '>
         <button
           onClick={scrollLeft}

@@ -3,7 +3,7 @@ import DefaultLayout from "../../components/Layout/defaultLayout/DefaultLayout";
 import Hero from "../../components/card/clearence/Hero";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProduct } from "../product/ProductAction";
-import CategoryCard from "../../components/card/category/CategoryCard";
+import CategoryCard from "../../components/category/CategoryCard";
 import Carousel from "../../components/Layout/carousel/Carousel";
 import { fetchAllCategories } from "../category/CatAction";
 
