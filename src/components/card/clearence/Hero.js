@@ -3,7 +3,7 @@ import Button from "../../Button/Button";
 
 const Hero = () => {
   return (
-    <div className='bg-gradient-to-r from-gre from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% pt-24 px-24'>
+    <div className='bg-gradient-to-r from-grey from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% pt-24 px-24'>
       <div className='button flex flex-col flex-wrap  justify-center items-center '>
         <Button>Final Clearence </Button>
         <p className='text-bold font-extrabold text-3xl'>

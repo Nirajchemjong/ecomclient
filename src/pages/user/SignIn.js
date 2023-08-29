@@ -1,7 +1,6 @@
 import React from "react";
 import DefaultLayout from "../../components/Layout/defaultLayout/DefaultLayout";
 import { InputField } from "../../utility/Constant";
-import Button from "../../components/Button/Button";
 const SignIn = () => {
   return (
     <>
